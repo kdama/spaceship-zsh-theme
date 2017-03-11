@@ -37,6 +37,9 @@ SPACESHIP_GIT_STASHED="${SPACESHIP_GIT_STASHED:-$}"
 SPACESHIP_GIT_UNPULLED="${SPACESHIP_GIT_UNPULLED:-⇣}"
 SPACESHIP_GIT_UNPUSHED="${SPACESHIP_GIT_UNPUSHED:-⇡}"
 
+# HOST
+SPACESHIP_HOST_SHOW="${SPACESHIP_HOST_SHOW:-true}"
+
 # TIME
 SPACESHIP_TIME_SHOW="${SPACESHIP_TIME_SHOW:-false}"
 SPACESHIP_TIME_12HR="${SPACESHIP_TIME_12HR:-false}"
@@ -104,6 +107,8 @@ spaceship_user() {
 # If there is an ssh connections, then show user and current machine.
 # If user is not $USER, then show username.
 spaceship_host() {
+  [[ $SPACESHIP_HOST_SHOW == false ]] && return
+
   if [[ -n $SSH_CONNECTION ]]; then
     echo -n "$(spaceship_user)"
 
